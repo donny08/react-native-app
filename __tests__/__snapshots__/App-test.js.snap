@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component Test renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../images/logo.png",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 20,
+        "height": 100,
+        "marginBottom": 100,
+        "width": 100,
+      }
+    }
+  />
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgb(0,0,255)",
+        "borderRadius": 20,
+        "flexDirection": "row",
+        "height": 35,
+        "justifyContent": "center",
+        "transform": Array [
+          Object {
+            "scale": 1,
+          },
+        ],
+        "width": 100,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../images/arrow.png",
+        }
+      }
+      style={
+        Object {
+          "height": 16,
+          "marginRight": 0,
+          "width": 16,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#FFF",
+          "fontSize": 12,
+          "fontWeight": "700",
+          "transform": Array [
+            Object {
+              "translateY": 1,
+            },
+          ],
+        }
+      }
+    >
+      Activate
+    </Text>
+  </View>
+</View>
+`;
