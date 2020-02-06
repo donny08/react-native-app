@@ -1,6 +1,9 @@
 const authorization ='Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZW1vdXNlcjEiLCJuYW1lIjoiUkFLQkFOSyBEZW1vIiwiaWF0IjoxNTE2MjM5MDIyfQ.hD2So1Jms00c7XB_bxNIrTgvSqMesmrlc0FkBAdY6rM';
 
 export default async payload => {
+  if (!payload) {
+    throw new Error('VALIDATION ERROR!');
+  }
   try {
     let response = await fetch('http://rakbank-test.mocklab.io/activation', {
       method: 'POST',
@@ -18,10 +21,11 @@ export default async payload => {
     };
   } catch (error) {
     console.error(error);
-    return {
-      success: false,
-      error: error,
-    };
+    throw new Error('Oops! Something went wrong. Please try again.');
+    // return {
+    //   success: false,
+    //   error: error,
+    // };
   }
 };
 // import 'isomorphic-fetch';

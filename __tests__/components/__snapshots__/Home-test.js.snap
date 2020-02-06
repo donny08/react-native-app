@@ -52,26 +52,10 @@ exports[`Home Component Test renders correctly 1`] = `
       }
     }
   >
-    <Image
-      source={
-        Object {
-          "testUri": "../../../images/arrow.png",
-        }
-      }
+    <View
       style={
         Object {
-          "height": 16,
-          "marginRight": 10,
-          "width": 16,
-        }
-      }
-    />
-    <Text
-      style={
-        Object {
-          "color": "#FFF",
-          "fontSize": 12,
-          "fontWeight": "700",
+          "flexDirection": "row",
           "transform": Array [
             Object {
               "translateY": 0,
@@ -80,8 +64,32 @@ exports[`Home Component Test renders correctly 1`] = `
         }
       }
     >
-      Activate
-    </Text>
+      <Image
+        source={
+          Object {
+            "testUri": "../../../images/arrow.png",
+          }
+        }
+        style={
+          Object {
+            "height": 16,
+            "marginRight": 10,
+            "width": 16,
+          }
+        }
+      />
+      <Text
+        style={
+          Object {
+            "color": "#FFF",
+            "fontSize": 12,
+            "fontWeight": "700",
+          }
+        }
+      >
+        Activate
+      </Text>
+    </View>
   </View>
 </View>
 `;

@@ -46,24 +46,6 @@ class Home extends Component {
   }
 
   async makeAPIRequest() {
-    Animated.timing(this.animatedText, {
-      toValue: -100,
-      easing: Easing.back(1),
-      duration: 1000,
-    }).start(() => {
-      this.animatedText.setValue(0);
-        this.setState({
-          title: STATUS.WAITING,
-          image: require('../images/spinner.gif'),
-          color: 'rgb(0,0,255)',
-          icon: {
-            width: 16,
-            height: 16,
-            marginRight: 8,
-          },
-        });
-    });
-
     try {
       const product = await addProduct({
         productId: '82jqp008d2l00',
@@ -77,17 +59,17 @@ class Home extends Component {
           duration: 1000,
         }).start(() => {
           this.animatedText.setValue(0);
-            this.setState({
-              title: STATUS.ACTIVATED,
-              image: require('../images/tick.png'),
-              color: '#51da7c',
-              icon: {
-                width: 18,
-                height: 18,
-                marginRight: 5,
-                marginTop: -1,
-              },
-            });
+          this.setState({
+            title: STATUS.ACTIVATED,
+            image: require('../images/tick.png'),
+            color: '#51da7c',
+            icon: {
+              width: 18,
+              height: 18,
+              marginRight: 5,
+              marginTop: -1,
+            },
+          });
         });
       }
     } catch (error) {
@@ -115,6 +97,24 @@ class Home extends Component {
     // }).start();
 
     if (this.state.title == 'Activate') {
+      Animated.timing(this.animatedText, {
+        toValue: -100,
+        easing: Easing.back(1),
+        duration: 1000,
+      }).start(() => {
+        this.animatedText.setValue(0);
+      });
+
+      this.setState({
+        title: STATUS.WAITING,
+        image: require('../images/spinner.gif'),
+        color: 'rgb(0,0,255)',
+        icon: {
+          width: 16,
+          height: 16,
+          marginRight: 8,
+        },
+      });
       this.makeAPIRequest();
     }
   }
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   text: {
     color: '#FFF',

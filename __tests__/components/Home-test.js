@@ -6,6 +6,7 @@ import MaterialIndicator from '../../components/MaterialIndicator';
 import STATUS from '../../services/status';
 import TestRenderer from 'react-test-renderer';
 import {TouchableWithoutFeedback, Animated, Text} from 'react-native';
+
 // import jsdom from 'jsdom';
 // require('react-native-mock-render/mock');
 
@@ -19,8 +20,9 @@ import {TouchableWithoutFeedback, Animated, Text} from 'react-native';
 //   if (typeof global[property] === 'undefined') {
 //     global[property] = document.defaultView[property];
 //   }
-// }); 
-jest.mock('../../services/addProduct');
+// });
+const home = new Home();
+// jest.mock('../../services/addProduct');
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
@@ -33,17 +35,17 @@ function flushPromises() {
 describe('Home Component Test', () => {
   let wrapper, testRenderer, testInstance;
 
-   beforeEach(() => {
-     //homeService.mockClear();
+  beforeEach(() => {
+    //homeService.mockClear();
     fetch.resetMocks();
     wrapper = shallow(<Home />);
     testRenderer = TestRenderer.create(<Home />);
     testInstance = testRenderer.root;
-   });
+  });
 
-   afterEach(() => {
-     jest.resetAllMocks();
-   });
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
 
   it('renders correctly', () => {
     const tree = renderer.create(<Home />).toJSON();
@@ -56,30 +58,38 @@ describe('Home Component Test', () => {
     expect(button.props.children).toEqual(STATUS.ACTIVATE);
   });
 
-  // it('tap on <TouchableWithoutFeedback /> and expect return <MaterialIndicator />', () => {
-  //   const wrapper = shallow(<Home />);
-  //   wrapper
-  //     .find(TouchableWithoutFeedback)
-  //     .first()
-  //     .props()
-  //     .onPressIn();
-      
-  //   expect(wrapper.find(MaterialIndicator).length).toBe(1);
-  // });
+  it('tap on button and expect return <MaterialIndicator />', () => {
+    wrapper
+      .find(TouchableWithoutFeedback)
+      .first()
+      .props()
+      .onPressIn();
 
-  it('tap on <TouchableWithoutFeedback /> and make API call', async () => {
-    const button = testInstance
-      .findByType(TouchableWithoutFeedback)
-      .props
-      .onPressIn;
-    console.debug(button);
-    expect(button).toHaveBeenCalledTimes(1);
-      //  addProduct.mockReturnValue({
-      //    json: () => 'it worked!',
-      //  });
+    expect(wrapper.find(MaterialIndicator).length).toBe(1);
+    // const button = testInstance.findByType(TouchableWithoutFeedback);
+    // button.props.onPressIn();
+    // expect(testInstance.findByType(MaterialIndicator)).toBe(1);
+  });
 
-        // const response = await Home.makeAPIRequest()
-        // expect(response).toEqual('it worked!');
+  it('tap on button and change text to WAITING', () => {
+    // const mockFunc = jest.fn();
+    // wrapper.setMethods({makeAPIRequest: mockFunc});
+    // mockCallBack.
+    const text = testInstance.findAllByType(Text)[0];
+    const button = testInstance.findByType(TouchableWithoutFeedback);
+
+    button.props.onPressIn();
+    button.props.onPressOut();
+    // console.log('text', text.props.children);
+
+    // expect(mockFunc).toHaveBeenCalled();
+    expect(text.props.children).toEqual(STATUS.WAITING);
+
+    // expect(button).toHaveBeenCalledTimes(1);
+    //  addProduct.mockReturnValue({
+    //    json: () => 'it worked!',
+    //  });
+    // expect(response).toEqual('it worked!');
   });
   /* it('tap on <TouchableWithoutFeedback /> and hit API call', async () => {
     const wrapper = shallow(<Home />);
