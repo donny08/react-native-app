@@ -10,6 +10,7 @@ Below you'll find information about performing common tasks.
 
 * [Updating to New Releases](#updating-to-new-releases)
 * [Available Scripts](#available-scripts)
+  * [npm install](#npm-install)
   * [npm start](#npm-start)
   * [npm test](#npm-test)
   * [npm run ios](#npm-run-ios)
@@ -28,6 +29,13 @@ Upgrading to a new version of React Native requires updating the `react-native`,
 ## Available Scripts
 
 If Yarn was installed when the project was initialized, then dependencies will have been installed via Yarn, and you should probably use it to run these commands as well. Unlike dependency installation, command running syntax is identical for Yarn and NPM at the time of this writing.
+
+### `npm install`
+```
+npm install
+# or
+yarn install
+```
 
 ### `npm start`
 
