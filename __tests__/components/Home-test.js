@@ -21,16 +21,16 @@ import {TouchableWithoutFeedback, Animated, Text} from 'react-native';
 //     global[property] = document.defaultView[property];
 //   }
 // });
-const home = new Home();
+//const home = new Home();
 // jest.mock('../../services/addProduct');
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
-import addProduct from '../../services/addProduct';
+//import addProduct from '../../services/addProduct';
 
-function flushPromises() {
-  return new Promise(resolve => setImmediate(resolve));
-}
+// function flushPromises() {
+//   return new Promise(resolve => setImmediate(resolve));
+// }
 
 describe('Home Component Test', () => {
   let wrapper, testRenderer, testInstance;
