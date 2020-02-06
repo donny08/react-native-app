@@ -52,16 +52,16 @@ class Home extends Component {
       duration: 1000,
     }).start(() => {
       this.animatedText.setValue(0);
-      this.setState({
-        title: STATUS.WAITING,
-        image: require('../images/spinner.gif'),
-        color: 'rgb(0,0,255)',
-        icon: {
-          width: 16,
-          height: 16,
-          marginRight: 8,
-        },
-      });
+        this.setState({
+          title: STATUS.WAITING,
+          image: require('../images/spinner.gif'),
+          color: 'rgb(0,0,255)',
+          icon: {
+            width: 16,
+            height: 16,
+            marginRight: 8,
+          },
+        });
     });
 
     try {
@@ -77,16 +77,17 @@ class Home extends Component {
           duration: 1000,
         }).start(() => {
           this.animatedText.setValue(0);
-          this.setState({
-            title: STATUS.ACTIVATED,
-            image: require('../images/tick.png'),
-            color: '#51da7c',
-            icon: {
-              width: 18,
-              height: 18,
-              marginRight: 7,
-            },
-          });
+            this.setState({
+              title: STATUS.ACTIVATED,
+              image: require('../images/tick.png'),
+              color: '#51da7c',
+              icon: {
+                width: 18,
+                height: 18,
+                marginRight: 5,
+                marginTop: -1,
+              },
+            });
         });
       }
     } catch (error) {
@@ -158,13 +159,21 @@ class Home extends Component {
           onPressOut={this.handlePressOut}>
           <Animated.View
             style={[styles.button, animatedStyle, {backgroundColor: color}]}>
-            {title != STATUS.WAITING && <Image style={icon} source={image} />}
+            {/* {title != STATUS.WAITING && <Image style={icon} source={image} />}
             {title == STATUS.WAITING && (
               <MaterialIndicator color="white" size={16} />
-            )}
-            <Animated.Text style={[styles.text, animatedText]}>
+            )} */}
+            <Animated.View style={[styles.row, animatedText]}>
+              {title != STATUS.WAITING && <Image style={icon} source={image} />}
+              {title == STATUS.WAITING && (
+                <MaterialIndicator color="white" size={16} />
+              )}
+              <Text style={styles.text}>{title}</Text>
+            </Animated.View>
+
+            {/* <Animated.Text style={[styles.text, animatedText]}>
               {title}
-            </Animated.Text>
+            </Animated.Text> */}
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>
@@ -191,6 +200,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+  },
+  row: {
+    flexDirection: 'row'
   },
   text: {
     color: '#FFF',

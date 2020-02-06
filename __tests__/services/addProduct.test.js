@@ -1,5 +1,5 @@
 import addProduct from '../../services/addProduct';
-jest.mock('../../services/addProduct');
+// jest.mock('../../services/addProduct');
 
 describe('testing api', () => {
   beforeEach(() => {
@@ -27,5 +27,15 @@ describe('testing api', () => {
 
     //assert on the response
     expect(apiReq).toEqual(response);
+  });
+
+  it("should throw Error with message 'UNKNOWN ERROR' when no params were passed", () => {
+    try {
+      throwError();
+      // Fail test if above expression doesn't throw anything.
+      expect(true).toBe(false);
+    } catch (error) {
+      expect(error.message).toBe('UNKNOWN ERROR');
+    }
   });
 });
