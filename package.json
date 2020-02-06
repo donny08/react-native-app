@@ -21,17 +21,24 @@
     "enzyme-adapter-react-15": "^1.4.1",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
+    "fetch-mock": "^9.0.0-beta.2",
     "jest": "^25.1.0",
     "jest-enzyme": "^7.1.2",
     "jest-fetch-mock": "^3.0.1",
+    "jsdom": "^16.1.0",
     "metro-react-native-babel-preset": "^0.58.0",
     "react-dom": "^16.12.0",
-    "react-test-renderer": "16.9.0"
+    "react-native-mock-render": "^0.1.8",
+    "react-test-renderer": "^16.12.0"
   },
   "jest": {
     "preset": "react-native",
     "setupFilesAfterEnv": [
-      "./setup-tests.js"
+      "./setupTests.js"
+    ],
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
     ]
   }
 }
