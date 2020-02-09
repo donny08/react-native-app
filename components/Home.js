@@ -54,9 +54,9 @@ class Home extends Component {
 
       if (product && product.success) {
         Animated.timing(this.animatedText, {
-          toValue: -100,
+          toValue: -10,
           easing: Easing.back(1),
-          duration: 1000,
+          duration: 700,
         }).start(() => {
           this.animatedText.setValue(0);
           this.setState({
@@ -98,24 +98,23 @@ class Home extends Component {
 
     if (this.state.title == 'Activate') {
       Animated.timing(this.animatedText, {
-        toValue: -100,
+        toValue: -10,
         easing: Easing.back(1),
-        duration: 1000,
+        duration: 700,
       }).start(() => {
         this.animatedText.setValue(0);
+         this.setState({
+           title: STATUS.WAITING,
+           image: require('../images/spinner.gif'),
+           color: 'rgb(0,0,255)',
+           icon: {
+             width: 16,
+             height: 16,
+             marginRight: 8,
+           },
+         });
+         this.makeAPIRequest();
       });
-
-      this.setState({
-        title: STATUS.WAITING,
-        image: require('../images/spinner.gif'),
-        color: 'rgb(0,0,255)',
-        icon: {
-          width: 16,
-          height: 16,
-          marginRight: 8,
-        },
-      });
-      this.makeAPIRequest();
     }
   }
 
