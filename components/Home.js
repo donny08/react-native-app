@@ -55,8 +55,8 @@ class Home extends Component {
       if (product && product.success) {
         Animated.timing(this.animatedText, {
           toValue: -10,
-          easing: Easing.back(1),
-          duration: 700,
+          // easing: Easing.back(1),
+          duration: 300,
         }).start(() => {
           this.animatedText.setValue(0);
           this.setState({
@@ -91,31 +91,31 @@ class Home extends Component {
     // this.animatedValue.setValue(0);
     Animated.spring(this.animatedValue, {
       toValue: 0.7,
-    }).start();
+    }).start(() => {
+      if (this.state.title == 'Activate') {
+        Animated.timing(this.animatedText, {
+          toValue: -5,
+          // easing: Easing.back(1),
+          duration: 300,
+        }).start(() => {
+          this.animatedText.setValue(0);
+          this.setState({
+            title: STATUS.WAITING,
+            image: require('../images/spinner.gif'),
+            color: 'rgb(0,0,255)',
+            icon: {
+              width: 16,
+              height: 16,
+              marginRight: 8,
+            },
+          });
+          this.makeAPIRequest();
+        });
+      }
+    });
     // Animated.timing(this.animatedValue, {
     //   toValue: 0.9,
     // }).start();
-
-    if (this.state.title == 'Activate') {
-      Animated.timing(this.animatedText, {
-        toValue: -10,
-        easing: Easing.back(1),
-        duration: 700,
-      }).start(() => {
-        this.animatedText.setValue(0);
-         this.setState({
-           title: STATUS.WAITING,
-           image: require('../images/spinner.gif'),
-           color: 'rgb(0,0,255)',
-           icon: {
-             width: 16,
-             height: 16,
-             marginRight: 8,
-           },
-         });
-         this.makeAPIRequest();
-      });
-    }
   }
 
   handlePressOut() {
@@ -158,21 +158,21 @@ class Home extends Component {
           onPressOut={this.handlePressOut}>
           <Animated.View
             style={[styles.button, animatedStyle, {backgroundColor: color}]}>
-            {/* {title != STATUS.WAITING && <Image style={icon} source={image} />}
+            {title != STATUS.WAITING && <Image style={icon} source={image} />}
             {title == STATUS.WAITING && (
               <MaterialIndicator color="white" size={16} />
-            )} */}
-            <Animated.View style={[styles.row, animatedText]}>
+            )}
+            {/* <Animated.View style={[styles.row, animatedText]}>
               {title != STATUS.WAITING && <Image style={icon} source={image} />}
               {title == STATUS.WAITING && (
                 <MaterialIndicator color="white" size={16} />
               )}
               <Text style={styles.text}>{title}</Text>
-            </Animated.View>
+            </Animated.View> */}
 
-            {/* <Animated.Text style={[styles.text, animatedText]}>
+            <Animated.Text style={[styles.text, animatedText]}>
               {title}
-            </Animated.Text> */}
+            </Animated.Text>
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>
