@@ -54,7 +54,7 @@ class Home extends Component {
 
       if (product && product.success) {
         Animated.timing(this.animatedText, {
-          toValue: -10,
+          toValue: -5,
           // easing: Easing.back(1),
           duration: 300,
         }).start(() => {
